@@ -3,6 +3,7 @@ import {
   LightModeOutlined,
   DarkModeOutlined,
   Menu as MenuIcon,
+  MenuOpen,
   Search,
   SettingsOutlined,
   ArrowDropDownOutlined,
@@ -45,7 +46,11 @@ const NavBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
         {/* LEFT SIDE */}
         <FlexBetween>
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-            <MenuIcon />
+            {isSidebarOpen ? (
+              <MenuOpen sx={{ fontSize: "2rem" }} />
+            ) : (
+              <MenuIcon sx={{ fontSize: "1.8rem" }} />
+            )}
           </IconButton>
           <FlexBetween
             backgroundColor={theme.palette.background.alt}

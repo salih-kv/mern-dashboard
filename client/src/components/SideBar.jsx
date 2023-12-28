@@ -116,6 +116,7 @@ const SideBar = ({
           anchor="left"
           sx={{
             width: drawerWidth,
+            position: "relative",
             // override the mui styles
             "& .MuiDrawer-paper": {
               color: theme.palette.secondary[200],
@@ -202,9 +203,18 @@ const SideBar = ({
           </Box>
 
           {/* BOTTOM */}
-          <Box position="absolute" bottom="2rem">
+          <Box
+            position="fixed"
+            width={drawerWidth}
+            bottom="0"
+            sx={{ background: theme.palette.background.alt }}
+          >
             <Divider />
-            <FlexBetween textTransform="none" gap="1rem" m="1.5rem 2rem 0 3rem">
+            <FlexBetween
+              textTransform="none"
+              gap=".5rem"
+              p="1.5rem 2rem 1.5rem 3rem"
+            >
               <Box
                 component="img"
                 alt="profile"
