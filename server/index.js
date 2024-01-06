@@ -9,6 +9,10 @@ import generalRoutes from "./routes/general.js";
 import managementRoutes from "./routes/management.js";
 import salesRoutes from "./routes/sales.js";
 
+// DATA IMPORTS
+import { User } from "./models/user.js";
+import { dataUser } from "./data/index.js";
+
 // CONFIGURATION
 dotenv.config();
 const app = express();
@@ -17,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan);
+app.use(morgan());
 
 // ROUTES
 app.use("/client", clientRoutes);
@@ -28,11 +32,11 @@ app.use("/sales", salesRoutes);
 // MONGOOSE SETUP
 const PORT = process.env.PORT || 9000;
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, () => console.log(`Server running on port:${PORT}`));
+
+    /** ONLY ADD DATA ONE TIME */
+    // User.insertMany(dataUser);
   })
   .catch((error) => console.log(error));
