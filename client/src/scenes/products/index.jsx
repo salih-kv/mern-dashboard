@@ -1,11 +1,25 @@
-import { Box, useMediaQuery } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import { useGetProductsQuery } from "../../state/api";
 import { Product } from "./product";
+import spinner from "../../assets/spinner.svg";
 
 const Products = () => {
   const { data, isLoading } = useGetProductsQuery();
-  const isNonMobile = useMediaQuery("(min-width: 1000px)");
+
+  const theme = useTheme();
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("lg"));
+  const isMediumScreen = useMediaQuery(theme.breakpoints.between("md", "lg"));
+
+  let gridColumns;
+
+  if (isLargeScreen) {
+    gridColumns = 4;
+  } else if (isMediumScreen) {
+    gridColumns = 2;
+  } else {
+    gridColumns = 1;
+  }
 
   return (
     <Box m="1.5rem 2.5rem">
@@ -14,20 +28,27 @@ const Products = () => {
         <Box
           mt="20px"
           display="grid"
-          gridTemplateColumns="repeat(4, minmax(0, 1fr))"
+          gridTemplateColumns={`repeat(${gridColumns}, minmax(0, 1fr))`}
           justifyContent="space-between"
           rowGap="20px"
           columnGap="1.33%"
-          sx={{
-            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
-          }}
         >
           {data.map((product) => (
             <Product key={product._id} {...product} />
           ))}
         </Box>
       ) : (
-        <>Loading...</>
+        <Box
+          sx={{
+            width: "100%",
+            height: "80vh",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img src={spinner} alt="spinner" width={500} />
+        </Box>
       )}
     </Box>
   );

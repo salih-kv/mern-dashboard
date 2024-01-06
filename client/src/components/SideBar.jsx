@@ -24,13 +24,12 @@ import {
   PointOfSaleOutlined,
   PublicOutlined,
   ReceiptLongOutlined,
-  SettingsOutlined,
   ShoppingCartOutlined,
   TodayOutlined,
   TrendingUpOutlined,
 } from "@mui/icons-material";
 import FlexBetween from "./FlexBetween";
-import profileImage from "../assets/julian-wan.jpg";
+import UserActionsButton from "./UserActionsButton";
 
 const navItems = [
   {
@@ -129,7 +128,7 @@ const SideBar = ({
           }}
         >
           {/* LEFT NAV */}
-          <Box width="100%" sx={{ paddingBottom: "8rem" }}>
+          <Box width="100%" sx={{ paddingBottom: "6rem" }}>
             {/* TOP/LOGO */}
             <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
@@ -205,50 +204,17 @@ const SideBar = ({
           </Box>
 
           {/* BOTTOM (USER) */}
-          <Box
-            position="fixed"
-            width={drawerWidth}
-            bottom="0"
-            sx={{ background: theme.palette.background.alt }}
-          >
-            <Divider />
-            <FlexBetween
-              textTransform="none"
-              gap=".5rem"
-              p="1.5rem 2rem 1.5rem 3rem"
+          {!isNonMobile && (
+            <Box
+              position="fixed"
+              width={drawerWidth}
+              bottom="0"
+              sx={{ background: theme.palette.background.alt }}
             >
-              <Box
-                component="img"
-                alt="profile"
-                src={profileImage}
-                height="40px"
-                width="40px"
-                borderRadius="50%"
-                sx={{ objectFit: "cover" }}
-              />
-              <Box textAlign="left">
-                <Typography
-                  fontWeight="bold"
-                  fontSize="0.9rem"
-                  sx={{ color: theme.palette.secondary[100] }}
-                >
-                  {user.name}
-                </Typography>
-                <Typography
-                  fontSize="0.8rem"
-                  sx={{ color: theme.palette.secondary[200] }}
-                >
-                  {user.occupation}
-                </Typography>
-              </Box>
-              <SettingsOutlined
-                sx={{
-                  color: theme.palette.secondary[100],
-                  fontSize: "25px ",
-                }}
-              />
-            </FlexBetween>
-          </Box>
+              <Divider />
+              <UserActionsButton user={user} isSideBar={true} />
+            </Box>
+          )}
         </Drawer>
       )}
     </Box>
