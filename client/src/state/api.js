@@ -5,13 +5,17 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_REACT_APP_BASE_URL,
   }),
-  tagTypes: ["User"], // identifier
+  tagTypes: ["User", "Products"], // identifier
   endpoints: (build) => ({
     getUser: build.query({
       query: (id) => `general/user/${id}`,
       providesTags: ["User"],
     }),
+    getProducts: build.query({
+      query: () => `client/products`,
+      providesTags: ["Products"],
+    }),
   }),
 });
 
-export const { useGetUserQuery } = api;
+export const { useGetUserQuery, useGetProductsQuery } = api;
