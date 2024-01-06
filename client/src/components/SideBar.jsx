@@ -127,7 +127,8 @@ const SideBar = ({
             },
           }}
         >
-          <Box width="100%">
+          {/* LEFT NAV */}
+          <Box width="100%" sx={{ paddingBottom: "8rem" }}>
             {/* TOP/LOGO */}
             <Box m="1.5rem 2rem 2rem 3rem">
               <FlexBetween color={theme.palette.secondary.main}>
@@ -144,7 +145,7 @@ const SideBar = ({
               </FlexBetween>
             </Box>
 
-            {/* LEFT NAV ITEMS */}
+            {/* NAV ITEMS */}
             <List>
               {navItems?.map(({ text, icon }) => {
                 if (!icon) {
@@ -202,7 +203,7 @@ const SideBar = ({
             </List>
           </Box>
 
-          {/* BOTTOM */}
+          {/* BOTTOM (USER) */}
           <Box
             position="fixed"
             width={drawerWidth}
