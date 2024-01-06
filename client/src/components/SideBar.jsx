@@ -96,6 +96,7 @@ const SideBar = ({
   isSidebarOpen,
   setIsSidebarOpen,
   isNonMobile,
+  user,
 }) => {
   const { pathname } = useLocation();
   const [active, setActive] = useState("");
@@ -231,18 +232,18 @@ const SideBar = ({
                   fontSize="0.9rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  Julian Wan
+                  {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.8rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  Pharmacist
+                  {user.occupation}
                 </Typography>
               </Box>
               <SettingsOutlined
                 sx={{
-                  color: theme.palette.secondary[300],
+                  color: theme.palette.secondary[100],
                   fontSize: "25px ",
                 }}
               />

@@ -25,7 +25,7 @@ import { useDispatch } from "react-redux";
 import { setMode } from "../state";
 import profileImage from "../assets/julian-wan.jpg";
 
-const NavBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const NavBar = ({ isSidebarOpen, setIsSidebarOpen, user }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
 
@@ -104,13 +104,13 @@ const NavBar = ({ isSidebarOpen, setIsSidebarOpen }) => {
                   fontSize="0.85rem"
                   sx={{ color: theme.palette.secondary[100] }}
                 >
-                  Julian Wan
+                  {user.name}
                 </Typography>
                 <Typography
                   fontSize="0.75rem"
                   sx={{ color: theme.palette.secondary[200] }}
                 >
-                  Pharmacist
+                  {user.occupation}
                 </Typography>
               </Box>
               <ArrowDropDownOutlined
