@@ -9,7 +9,7 @@ const UserActionsButton = ({ user, isSideBar = false }) => {
   const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const isOpen = Boolean(anchorEl);k
+  const isOpen = Boolean(anchorEl);
   const handleClick = (e) => setAnchorEl(e.currentTarget);
   const handleClose = () => setAnchorEl(null);
 
