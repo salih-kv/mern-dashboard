@@ -13,7 +13,13 @@ import salesRoutes from "./routes/sales.js";
 import { User } from "./models/user.js";
 import { Product } from "./models/product.js";
 import { ProductStat } from "./models/productStat.js";
-import { dataUser, dataProduct, dataProductStat } from "./data/index.js";
+import { Transaction } from "./models/transaction.js";
+import {
+  dataUser,
+  dataProduct,
+  dataProductStat,
+  dataTransaction,
+} from "./data/index.js";
 
 // CONFIGURATION
 dotenv.config();
@@ -23,7 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
-app.use(morgan());
+// app.use(morgan());
 
 // ROUTES
 app.use("/client", clientRoutes);
@@ -42,5 +48,6 @@ mongoose
     // User.insertMany(dataUser);
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
+    // Transaction.insertMany(dataTransaction);
   })
   .catch((error) => console.log(error));
