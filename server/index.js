@@ -14,11 +14,13 @@ import { User } from "./models/user.js";
 import { Product } from "./models/product.js";
 import { ProductStat } from "./models/productStat.js";
 import { Transaction } from "./models/transaction.js";
+import { OverallStat } from "./models/overallStat.js";
 import {
   dataUser,
   dataProduct,
   dataProductStat,
   dataTransaction,
+  dataOverallStat,
 } from "./data/index.js";
 
 // CONFIGURATION
@@ -49,5 +51,6 @@ mongoose
     // Product.insertMany(dataProduct);
     // ProductStat.insertMany(dataProductStat);
     // Transaction.insertMany(dataTransaction);
+    // OverallStat.insertMany(dataOverallStat);
   })
   .catch((error) => console.log(error));
