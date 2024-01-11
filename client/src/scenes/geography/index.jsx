@@ -1,9 +1,9 @@
 import { Box, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import { ResponsiveChoropleth } from "@nivo/geo";
-import spinner from "../../assets/spinner.svg";
 import { useGetGeographyQuery } from "../../state/api";
 import { geoData } from "../../state/geoData";
+import { Loading } from "../../components/Loading";
 
 const Geography = () => {
   const theme = useTheme();
@@ -92,17 +92,7 @@ const Geography = () => {
             ]}
           />
         ) : (
-          <Box
-            sx={{
-              width: "100%",
-              height: "80vh",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-          >
-            <img src={spinner} alt="spinner" width={500} />
-          </Box>
+          <Loading />
         )}
       </Box>
     </Box>

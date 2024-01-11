@@ -5,6 +5,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import Header from "../../components/Header";
 import { useGetSalesQuery } from "../../state/api";
+import { Loading } from "../../components/Loading";
 
 const Daily = () => {
   const [startDate, setStartDate] = useState(new Date("2021-02-01"));
@@ -177,7 +178,7 @@ const Daily = () => {
             ]}
           />
         ) : (
-          <>Loading...</>
+          <Loading />
         )}
       </Box>
     </Box>

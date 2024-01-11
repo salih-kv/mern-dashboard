@@ -1,10 +1,9 @@
 // color design tokens export
-
 export const tokensDark = {
   grey: {
-    0: "#ffffff", // manually adjusted
+    0: "#ffffff", // light-p-bg manually adjusted
     10: "#f6f6f6", // manually adjusted
-    50: "#f0f0f0", // manually adjusted
+    50: "#f0f0f0", // light-s-bg
     100: "#e0e0e0",
     200: "#c2c2c2",
     300: "#a3a3a3",
@@ -14,7 +13,6 @@ export const tokensDark = {
     700: "#3d3d3d",
     800: "#292929",
     900: "#141414",
-    1000: "#000000", // manually adjusted
   },
   primary: {
     // black
@@ -29,7 +27,8 @@ export const tokensDark = {
     900: "#060608",
   },
   secondary: {
-    100: "#f0f0f0", // manually adjusted
+    // Orange-Yellow
+    100: "#f0f0f0", // nav-text-color
     200: "#ffedc2",
     300: "#ffe3a3",
     400: "#ffda85",
@@ -91,7 +90,7 @@ export const themeSettings = (mode) => {
             // palette values for light mode
             primary: {
               ...tokensLight.primary,
-              main: tokensDark.grey[50],
+              main: tokensDark.grey[500],
               light: tokensDark.grey[100],
             },
             secondary: {

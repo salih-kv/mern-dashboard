@@ -2,7 +2,7 @@ import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Header from "../../components/Header";
 import { useGetProductsQuery } from "../../state/api";
 import { Product } from "./product";
-import spinner from "../../assets/spinner.svg";
+import { Loading } from "../../components/Loading";
 
 const Products = () => {
   const { data, isLoading } = useGetProductsQuery();
@@ -38,17 +38,7 @@ const Products = () => {
           ))}
         </Box>
       ) : (
-        <Box
-          sx={{
-            width: "100%",
-            height: "80vh",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <img src={spinner} alt="spinner" width={500} />
-        </Box>
+        <Loading />
       )}
     </Box>
   );
